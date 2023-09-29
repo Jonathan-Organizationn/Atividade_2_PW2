@@ -5,8 +5,8 @@
     align-items: center;
     justify-content: center;
     gap: 0.5em;
-    position: absolute;
-    top: 18.5%;
+    position: relative;
+    top: -25px;
 }
 
 .container input {

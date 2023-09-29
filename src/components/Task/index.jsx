@@ -1,17 +1,21 @@
-import Styles from "./style.module.css"
-import { AiOutlineDelete } from "react-icons/ai"
+import Styles from "./style.module.css";
+import { AiOutlineDelete } from "react-icons/ai";
 
-function Task({customClass}) {
-    return (
-        <>
+function Task({ customClass, listTasks, handleDelete }) {
+  return (
+    <>
+      {listTasks.map((Task) => (
         <div className={`${Styles.task} ${customClass}`}>
-            <input type="checkbox" />
-            <label className={Styles.check}></label>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ullam magni modi pariatur sit cum. Dolorem sint maiores rem explicabo dignissimos aliquam ex fuga minus, reprehenderit saepe reiciendis autem quo expedita.</p>
-            <button><AiOutlineDelete /></button>
+          <input type="checkbox" />
+          <label className={Styles.check}></label>
+          <p>{Task.task}</p>
+          <button key={Task.id} onClick={() => handleDelete(Task.id)}>
+            <AiOutlineDelete />
+          </button>
         </div>
-        </>
-    )
+      ))}
+    </>
+  );
 }
 
-export default Task
+export default Task;

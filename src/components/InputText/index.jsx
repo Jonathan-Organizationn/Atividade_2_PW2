@@ -2,18 +2,14 @@ import { AiOutlinePlusCircle } from "react-icons/ai";
 import Styles from "./style.module.css";
 import { useState } from "react";
 
-function InputText() {
+function InputText({ handleInput }) {
   const [input, setInput] = useState("");
-  const [list, setList] = useState([])
-  function addTask(item) {
-    const Item = {
-      id: Math.random(),
-      task: item
-    }
-    setList([...list, Item])
-    setInput("")
-    console.log(list)
+
+  function addInput() {
+    handleInput(input);
+    setInput("");
   }
+
   return (
     <div className={Styles.container}>
       <input
@@ -22,7 +18,7 @@ function InputText() {
         value={input}
         onChange={(e) => setInput(e.target.value)}
       />
-      <button onClick={() => addTask(input)}>
+      <button onClick={addInput}>
         Criar <AiOutlinePlusCircle style={{ fontSize: "1.2em" }} />
       </button>
     </div>

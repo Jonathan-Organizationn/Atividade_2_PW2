@@ -13,5 +13,6 @@
     align-items: center;
     min-height: 100vh;
     height: 100%;
+    padding-bottom: 2em;
     background-color: #1A1A1A;
 }
