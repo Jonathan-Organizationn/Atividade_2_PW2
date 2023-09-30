@@ -14,6 +14,13 @@ function BoxTask() {
     }
   }, [task, list]);
 
+  useEffect(() => {
+    if (list !== null && list !== "") {
+      const newList = JSON.parse(localStorage.getItem("taskList"))
+      setList(newList)
+    }
+  }, [])
+
   const addTask = (item) => {
     const newItem = {
       id: Math.random(),
@@ -21,6 +28,7 @@ function BoxTask() {
       status: false,
     };
     setTask(newItem);
+    localStorage.setItem("taskList", JSON.stringify([...list, newItem]))
   };
 
   const deleteTask = (id) => {
@@ -53,10 +61,12 @@ function BoxTask() {
           </span>
         </p>
       </div>
-        {list.length === 0 && <div className={`${Styles.boxText} ${Styles.container}`}>
-            <h3>Você ainda não tem tecnologias cadastradas</h3>
-            <p>Crie tecnologia e organize seus itens a fazer</p>
-        </div>}
+      {list.length === 0 && (
+        <div className={`${Styles.boxText} ${Styles.container}`}>
+          <h3>Você ainda não tem tecnologias cadastradas</h3>
+          <p>Crie tecnologia e organize seus itens a fazer</p>
+        </div>
+      )}
       <Task
         customClass={Styles.container}
         listTasks={list}
