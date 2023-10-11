@@ -9,7 +9,7 @@ function Task({ customClass, listTasks, handleDelete, handleStatus }) {
           <input
             type="checkbox"
             checked={Task.status}
-            onChange={() => handleStatus(Task.id)}
+            onChange={() => handleStatus(Task.id)} 
           />
           <label className={Styles.check}></label>
           <p>{Task.task}</p>

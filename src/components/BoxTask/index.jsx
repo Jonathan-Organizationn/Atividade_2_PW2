@@ -15,11 +15,11 @@ function BoxTask() {
   }, [task, list]);
 
   useEffect(() => {
-    if (list !== null && list !== "") {
-      const newList = JSON.parse(localStorage.getItem("taskList"))
-      setList(newList)
+    const newList = JSON.parse(localStorage.getItem("taskList"));
+    if (newList) {
+      setList(newList);
     }
-  }, [])
+  }, []);
 
   const addTask = (item) => {
     const newItem = {
@@ -28,7 +28,7 @@ function BoxTask() {
       status: false,
     };
     setTask(newItem);
-    localStorage.setItem("taskList", JSON.stringify([...list, newItem]))
+    localStorage.setItem("taskList", JSON.stringify([...list, newItem]));
   };
 
   const deleteTask = (id) => {
@@ -51,7 +51,7 @@ function BoxTask() {
       <InputText handleInput={addTask} />
       <div className={`${Styles.indicator} ${Styles.container}`}>
         <p>
-          Tecnologias criadas <span>{list.length}</span>
+          Tecnologias criadas <span>{list ? list.length : 0}</span>
         </p>
         <p style={{ color: "#8284FA" }}>
           Concluídas{" "}
